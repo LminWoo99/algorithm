@@ -10,5 +10,5 @@ while True:
     else:
         cnt+=1
         if cur[0]==m:
+            print(cnt)
             break
-print(cnt)
