@@ -12,6 +12,7 @@ def DFS(L):
             DFS(L+1)
 n, m=map(int, input().split())
 res=[0]*n
+ch=[0]*n
 cnt=0
 DFS(0)
 print(cnt)
