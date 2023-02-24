@@ -5,7 +5,6 @@ def DFS(L, s):
             print(a[i], end=' ')
         cnt+=1
         print()
-    
     else:
         for i in range(s, n+1):
             a[L]=i
