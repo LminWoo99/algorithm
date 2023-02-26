@@ -7,4 +7,3 @@ for j in range(n):
     for k in range(n):
         print(a[j][k], end=' ')
     print()
-
