@@ -5,6 +5,7 @@ def DFS(L):
     else:
         for i in range(1,n+1):
             if a[L][i]==1 and ch[i]==0:
+                
                 ch[i]=1
                 DFS(i)
                 ch[i]=0
