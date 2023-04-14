@@ -9,7 +9,6 @@ sum=0
 ch[n//2][n//2]=1
 sum+=a[n//2][n//2]
 dq.append((n//2, n//2))
-print(dq[0])
 L=0
 while True:
     if L==n//2:
