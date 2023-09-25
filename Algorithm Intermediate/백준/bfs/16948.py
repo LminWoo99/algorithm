@@ -1,6 +1,7 @@
 import sys
 input=sys.stdin.readline
 from collections import deque
+
 def BFS(r, c):
     dq=deque()
     dq.append([r,c])
