@@ -25,4 +25,3 @@ while q:
             visited[ni - 1][nj] = True
             q.append((ni - 1, nj))
 print(ans)
-## 애초에 최소 움직이는 수를 구하는것도 아여서 벽을 이동할 필요없이 visited[ni - 1]을  하면 하나씩움직일 #을 계산하것이므로 if graph[i][j] == '#':여기에걸림
