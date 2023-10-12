@@ -8,7 +8,7 @@ for i in range(n):
     x,y=map(int, input().split())
     a.append((x,y))
     
-a.sort()
+a.sort(key=lambda x:x[1])
 tmp=[]
 for x in a:
     heapq.heappush(tmp, x[0])
