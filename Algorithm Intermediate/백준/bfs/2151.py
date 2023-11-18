@@ -41,7 +41,6 @@ def bfs():
                     Q.append((nr, nc, d))
             # 거울 설치 O
             for nd in changeDir[d]:
-                print(nd)
                 if check[nr][nc][nd] == -1:     # 첫 방문
                     check[nr][nc][nd] = check[r][c][d] + 1
                     Q.append((nr, nc, nd))

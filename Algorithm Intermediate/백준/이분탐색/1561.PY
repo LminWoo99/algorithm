@@ -1,15 +1,15 @@
 import sys
 input = sys.stdin.readline
 
-# 특정 시간 안에 놀이 기구를 탄 아이들의 수를 반환
+
 def get_rider_cnt(M, a, time):
-    # 0분에서는 모든 놀이기구를 탑승하기 때문에 sum_p의 기본값은 M
+
     sum_p = M
     for c in a:
         sum_p += time // c
     return sum_p
 
-# 모든 아이들이 놀이 기구를 탄 시간을 이분 탐색을 사용하여 반환
+
 def get_time(N, M, a, MAX_PT):
     time = 0
     lt = 0

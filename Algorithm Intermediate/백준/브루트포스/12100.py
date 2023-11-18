@@ -8,8 +8,6 @@ a=[list(map(int, input().split())) for _ in range(n)]
 def DFS(board, cnt):
     if cnt==5:
         return max(map(max, board))
-    # 상, 하, 좌, 우로 움직여 리턴한 값들 중 가장 큰 값 반환
-    # board를 꼭 deepcopy하여 함수를 거친 board값이 다음 함수에 들어가지 못하도록 해주어야 한다.
     return max(DFS(up(deepcopy(board)), cnt + 1), DFS(down(deepcopy(board)), cnt + 1), DFS(left(deepcopy(board)), cnt + 1), DFS(right(deepcopy(board)), cnt + 1))
     
     
