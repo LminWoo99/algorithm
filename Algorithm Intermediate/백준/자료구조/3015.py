@@ -1,11 +1,10 @@
 n=int(input())
 height_list=[]
+stack = []
+res = 0
 for i in range(n):
     tmp=int(input())
     height_list.append(tmp)
-stack = []
-res = 0
-
 for height in height_list:
   while stack and stack[-1][0]<height:
     res += stack.pop()[1]
