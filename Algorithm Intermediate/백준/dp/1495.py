@@ -1,7 +1,7 @@
 import sys
 input=sys.stdin.readline
-import time
-start=time.time()
+
+
             
 n,s,m=map(int, input().split())
 music=list(map(int, input().split()))
@@ -21,5 +21,5 @@ for i in range(m, -1, -1):
        ans=i
        break  
 print(ans)
-end=time.time()
-print(end-start)
+
+
