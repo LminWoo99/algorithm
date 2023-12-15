@@ -1,9 +1,15 @@
 import sys
 input=sys.stdin.readline
 from copy import deepcopy
+
 n=int(input())
 block=[list(map(int, input().split())) for _ in range(n)]
-    
+
+def DFS(board, L):
+    if L==5:
+        return max(map(max, board))
+
+    return max(DFS(up(deepcopy(board)), L+1), DFS(down(deepcopy(board)), L+1), DFS(left(deepcopy(board)), L+1), DFS(right(deepcopy(board)), L+1))    
 def up(board):
     for j in range(n):
         pointer=0
@@ -71,12 +77,8 @@ def right(board):
                     pointer -= 1
                     board[i][pointer] = tmp
     return board
-res=0
-def DFS(board, L):
-    if L==5:
-        return max(map(max, board))
 
-    return max(DFS(up(deepcopy(board)), L+1), DFS(down(deepcopy(board)), L+1), DFS(left(deepcopy(board)), L+1), DFS(down(deepcopy(board)), L+1))
 
-res=DFS(block, 0)
-print(res)
+
+
+print(DFS(block, 0))
