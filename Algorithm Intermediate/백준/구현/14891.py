@@ -17,12 +17,10 @@ def solution(x,y,t):
 def check(x, y, t, b):
     if x+1<=4:
         if b[2]!=a[x][6] and visit[t][x+1]:
-        # if a[x-1][2]!=a[x][6] and  visit[t][x+1]:
             visit[t][x+1]=0
             solution(x+1, -y,t)
     if x-1>=1:
         if b[6]!=a[x-2][2] and visit[t][x-1]:
-        # if a[x-1][6]!=a[x-2][2]  and visit[t][x-1]:
             visit[t][x-1]=0
             solution(x-1, -y,t)
                     
