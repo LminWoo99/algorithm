@@ -1,8 +1,4 @@
-def DFS(L):
-    if  L==3:
-        print("wow")
-        return
-    else:
-        DFS(L+1)
-        print("heello")
-DFS(0)
+dx=[-1,0,1,0]
+dy=[0,1,0,-1]
+for x,y in dx,dy:
+    print(x,y)
