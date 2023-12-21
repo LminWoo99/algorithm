@@ -1,57 +1,39 @@
-import sys
-input=sys.stdin.readline
-def solve(i, cnt):
-    flag=True
-    global result
+n, l = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(n)]
 
-    back=-10
-    if cnt<=1:
-        for x in range(len(i)-1):
-            
-            if i[x]!=i[x+1]:
-                if abs(i[x]-i[x+1])!=1:
-                    flag=False
-                    break
-                else:
-                    # if back+l==x:
-                    #     print(i, back)
-                    #     flag=False
-                    #     break
-                    # else:
-                        
-                        if x+l+1<=len(i)-1:
-                            
-                            for j in range(x+1, x+l+1):
-                                if i[j]!=i[j+1]:
-                                   
-                                    flag=False
-                                    break
-                                else:
-                                    print(i, back)
-                                    back=j
-                        
-                        else:
-                            flag=False
-                            break
+def solution(road):
+    global n, l
+    visited = [0] * n
+    for i in range(n - 1):
+        if road[i] != road[i + 1]:
+            if abs(road[i] - road[i+1]) > 1 :
+                return False
+            else:
+                if road[i] - road[i + 1] == 1:
+                    if i+1+l > n:
+                        return False
+                    check = road[i + 1]
+                    for j in range(i+1, i+1+l):
+                        if visited[j] or road[j] != check:
+                            return False
+                        visited[j] = 1
+                elif road[i] - road[i + 1] == -1:
+                    if i - l < - 1:
+                        return False
+                    check = road[i]
+                    for j in range(i, i-l, -1):
+                        if visited[j] or road[j] != check:
+                            return False
+                        visited[j] = 1
+    return True
 
-        if flag:
-            print(i)
-            result+=1
-            return
-        # else:
-        #     i=i[::-1]
-        #     solve(i, cnt+1)]
-    
-    return 0        
-        
-n,l=map(int, input().split())
-board=[list(map(int, input().split())) for _ in range(n)]
-result=0
-for i in board:
-    solve(i, 0)
-for i in range(n):
-    j=list(zip(*board))[i]
-    solve(j, 0)
+result = 0
+for row in arr:
+    if solution(row):
+        result += 1
 
+for columns in range(n):
+    if solution( [arr[row][columns] for row in range(n)]):
+        result += 1
 
 print(result)
