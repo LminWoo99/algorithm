@@ -20,7 +20,7 @@ def solution(i,j,num,flag):
     return flag
 def divide(visit):
     global cnt
-    a=[[0]*2 for _ in range(2000)]
+    a=[[0]*2 for _ in range(n*n+1)]
     tmp=1
     country_count=0
     for i in range(n):
