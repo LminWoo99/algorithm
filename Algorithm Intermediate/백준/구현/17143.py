@@ -3,13 +3,7 @@ input=sys.stdin.readline
 
 r, c, m = map(int, input().split())                                                                                  
 dx = [-1, 1, 0, 0]                                                                    
-dy = [0, 0, 1, -1]                                                                    
-                                                                                      
-board = [[[] for _ in range(c)] for _ in range(r)]                                    
-                                                                                      
-for _ in range(m):                                                                    
-    x, y, s, d, z = map(int, input().split())                                         
-    board[x-1][y-1].append([z, s, d-1])                                               
+dy = [0, 0, 1, -1]       
                                                                                       
 def move():                                                                         
     g = [[[] for _ in range(c)] for _ in range(r)]                                    
@@ -34,8 +28,14 @@ def move():
                 g[x][y].append([z, s, d])                                             
     for i in range(r):                                                                
         for j in range(c):                                                            
-            board[i][j] = g[i][j]                                                     
+            board[i][j] = g[i][j] 
+                                                                         
                                                                                       
+board = [[[] for _ in range(c)] for _ in range(r)]                                    
+                                                                                      
+for _ in range(m):                                                                    
+    x, y, s, d, z = map(int, input().split())                                         
+    board[x-1][y-1].append([z, s, d-1])                                                                                                                                                                                         
 result = 0                                                                         
                                                                                       
 for i in range(c):                                                                    
