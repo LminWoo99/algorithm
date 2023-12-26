@@ -31,8 +31,8 @@ def DFS(py1, py2, index, win, player):
 for p1 in permutations(jiwo, N):
     player = [p1,p2,p3] 
     index = [0,0,0] 
-    win = [0,0,0] # 지우, 경희, 민호가 각각 몇번 이겼는지
-    result = 0 # 지우가 이길수있는지
+    win = [0,0,0] 
+    result = 0 
     DFS(0,1,index,win,player)
     if result == 1:
         print(1)
