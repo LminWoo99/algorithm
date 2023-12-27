@@ -49,5 +49,3 @@ while True:
             a=line(a)
             a=list(map(list, zip(*a)))
 
-
-

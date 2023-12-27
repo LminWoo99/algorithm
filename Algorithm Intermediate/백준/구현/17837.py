@@ -35,7 +35,7 @@ def move(h_num):
             break
 
     if board[nx][ny] == 1:
-        horse_up = horse_up[-1::-1]
+        horse_up = horse_up[::-1]
 
     for h in horse_up:
         horse[h][0], horse[h][1] = nx, ny
