@@ -8,7 +8,7 @@ board=[list(map(int, input().rstrip())) for _ in range(n)]
 dp=[[0]*(m+1) for _ in range(n+1)]
 max_side=0
 if n==1 or m==1:
-    print(0)
+    print(1)
 else:
     for i in range(m):
         dp[0][i]=board[0][i]
