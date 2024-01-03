@@ -1,6 +1,6 @@
 import sys
 input=sys.stdin.readline
-from collections import defaultdict,deque
+from collections import defaultdict
 n=int(input())
 work=defaultdict(list)
 dp=[0]*(n+1)
@@ -20,8 +20,7 @@ for i in range(1, n+1):
                 
                 tmp=max(tmp, dp[work_time])
                 index=work_time
-            # if dp[i]<dp[work_time]:
-            # dp[i]+=dp[work_time]
+            
         dp[i]+=dp[index]
 
 print(max(dp))
