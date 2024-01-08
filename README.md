@@ -4,9 +4,12 @@
 
 ### 알고리즘 별 목차
 <hr>
+
 1. 인기 문제집
 - [단기간 성장 문제집 코드](https://github.com/LminWoo99/algorithm/tree/master/Algorithm%20Intermediate/%EB%B0%B1%EC%A4%80/%EB%8B%A8%EA%B8%B0%EA%B0%84%EC%84%B1%EC%9E%A5%EB%AC%B8%EC%A0%9C%EC%A7%91)
+  
 <hr>
+
 1. [BFS](https://github.com/LminWoo99/algorithm/tree/master/Algorithm%20Intermediate/%EB%B0%B1%EC%A4%80/bfs)
 2. [DFS](https://github.com/LminWoo99/algorithm/tree/master/Algorithm%20Intermediate/%EB%B0%B1%EC%A4%80/dfs)
 3. [DP](https://github.com/LminWoo99/algorithm/tree/master/Algorithm%20Intermediate/%EB%B0%B1%EC%A4%80/dp)
