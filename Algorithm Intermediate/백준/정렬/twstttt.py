@@ -1,27 +1,46 @@
 import sys
-input=sys.stdin.readline
-N = int(input())
-board = []
-for _ in range(N):
-    board.append(list(map(int, sys.stdin.readline().split())))
-dp = {}
-def DFS(now, visit):
-    if visit == (1 << N) - 1:
-        if board[now][0]:
-            return board[now][0]
-        else:
-            return int(1e9)
-    if (now, visit) in dp:
-        return dp[(now, visit)]
-    res = sys.maxsize
-    for next in range(1, N):
-        if board[now][next] == 0 or visit & (1 << next):
-            continue
-        cost = DFS(next, visit | (1 << next)) + board[now][next]
-        res = min(cost, res)
+from collections import deque
 
-    dp[(now, visit)] = res  
-    return res  
+visited = []
+res = 0
+def pool():
+    global res, visited
+    def bfs(x, y, h):
+        global res, visited
+        que = deque()
+        que.append((x,y))
+        flag = True  
+        visited[x][y] = True
+        cnt = 1
+        while que:
+            x, y = que.popleft()
+            for t in range(4):
+                nx = x + dx[t]
+                ny = y + dy[t]
+                if nx == -1 or nx == N or ny == -1 or ny == M:
+                    flag = False
+                    continue
+                if board[nx][ny] <= h and not visited[nx][ny]:
+                    visited[nx][ny] = True
+                    que.append((nx, ny))
+                    cnt += 1
+        if flag:
+            res += cnt
+
+    N, M = map(int, input().split())
+    board = [list(map(int, list(sys.stdin.readline().rstrip()))) for _ in range(N)]
+
+    dx = [-1,0,1,0]
+    dy=[0,1,0,-1]
+    
+
+    for num in range(1, 9):
+        visited = [[0] * M for _ in range(N)]
+        for i in range(N):
+            for j in range(M):
+                if board[i][j] <= num and not visited[i][j]:
+                    bfs(i, j, num)
+    print(res)
 
 
-print(DFS(0, 1))
+pool()
