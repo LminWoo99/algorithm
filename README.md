@@ -1,12 +1,13 @@
 ## 🏆 Algorithm
 
-### 백준에서 푼 문제들의 소스코드를 정리 해놓은 저장소입니다.(Python)
+### 백준,프로그래머스에서 푼 문제들의 소스코드를 정리 해놓은 저장소입니다.(Python)
 
 ### 알고리즘 별 목차
 <hr>
 
 1. 인기 문제집
-- [단기간 성장 문제집 코드](https://github.com/LminWoo99/algorithm/tree/master/Algorithm%20Intermediate/%EB%B0%B1%EC%A4%80/%EB%8B%A8%EA%B8%B0%EA%B0%84%EC%84%B1%EC%9E%A5%EB%AC%B8%EC%A0%9C%EC%A7%91)
+- [백준 -단기간 성장 문제집 코드](https://github.com/LminWoo99/algorithm/tree/master/Algorithm%20Intermediate/%EB%B0%B1%EC%A4%80/%EB%8B%A8%EA%B8%B0%EA%B0%84%EC%84%B1%EC%9E%A5%EB%AC%B8%EC%A0%9C%EC%A7%91)
+- [프로그래머스](https://github.com/LminWoo99/algorithm/tree/master/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4)
   
 <hr>
 
