@@ -17,7 +17,6 @@ def solution(maze):
                 red_end=(i,j)
             elif maze[i][j]==4:
                 blue_end=(i,j)
-    
 #     0이 red 1이 blue
     def BFS(red_start, blue_start, answer):
         visit=[[[0]*2 for _ in range(m)] for _ in range(n)]
