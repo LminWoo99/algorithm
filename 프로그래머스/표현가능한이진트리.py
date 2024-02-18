@@ -7,7 +7,9 @@ def solution(numbers):
             return False
         # 왼쪽 서브트리
         left=dfs(b, i-depth, depth//2)
+        
         right=dfs(b, i+depth, depth//2)
+        print(i, depth)
         return left and right
                 
         
@@ -29,3 +31,4 @@ def solution(numbers):
         result=dfs(binary_num, len(binary_num)//2, (len(binary_num)+1)//4)
         answer.append(1 if result else 0)
     return answer
+solution([7, 42, 5])
