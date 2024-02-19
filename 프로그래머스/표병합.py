@@ -1,55 +1,42 @@
 def solution(commands):
     answer = []
-
-    board=[["EMPTY"]*50 for _ in range(50)]
-    merge_check= [[(i, j) for j in range(50)] for i in range(50)]
-    def update(x,y,change):
-        xx,yy=merge_check[x-1][y-1]
-        board[xx][yy]=change
-    def updateAll(changeX, changeY):
-        for i in range(50):
-            for j in range(50):
-                if board[i][j]==changeX:
-                    board[i][j]=changeY
-    def merge(x,y,xx,yy):
-        mergeX1, mergeY1=merge_check[x-1][y-1]
-        mergeX2, mergeY2=merge_check[xx-1][yy-1]
-        
-        if board[mergeX1][mergeY1]=="EMPTY":
-            board[mergeX1][mergeY1]=board[mergeX2][mergeY2]
-        for i in range(50):
-            for j in range(50):
-                if merge_check[i][j]==(mergeX2, mergeY2):
-                    merge_check[i][j]=(mergeX1, mergeY1)
-
-    def unmerge(x,y):
-        r,c=merge_check[x-1][y-1]
-        tmp=board[r][c]
-        for i in range(50):
-            for j in range(50):
-                if merge_check[i][j]==(r, c):
-                    merge_check[i][j]=(i, j)
-                    board[i][j]=="EMPTY"
-        board[x-1][y-1]=tmp   
-            
-    for cmd in  commands:
-        cmd=cmd.split(' ')
-        if cmd[0]=="UPDATE":
-            if cmd[1].isdigit():
-                update(int(cmd[1]), int(cmd[2]), cmd[3])
-            else:
-                updateAll(cmd[1], cmd[2])
-        elif cmd[0]=="MERGE":
-            if (cmd[1]!=cmd[3] or cmd[2]!=cmd[4]):
-                merge(int(cmd[1]),int(cmd[2]),int(cmd[3]),int(cmd[4]))
-        elif cmd[0]=="UNMERGE":
-            unmerge(int(cmd[1]), int(cmd[2]))
-        else:
-            x,y=int(cmd[1]), int(cmd[2])
-            xx,yy=merge_check[x-1][y-1]
-
-            answer.append(board[xx][yy])
-
-
+    merged = [[(i, j) for j in range(50)] for i in range(50)]
+    board = [["EMPTY"] * 50 for _ in range(50)]
+    for command in commands:
+        command = command.split(' ')
+        if command[0] == 'UPDATE':
+            if len(command) == 4:
+                r,c,value = int(command[1])-1,int(command[2])-1,command[3]
+                x,y = merged[r][c]
+                board[x][y] = value
+            elif len(command) == 3:
+                value1, value2 = command[1], command[2]
+                for i in range(50):
+                    for j in range(50):
+                        if board[i][j] == value1:
+                            board[i][j] = value2
+        elif command[0] == 'MERGE':
+            r1,c1,r2,c2 = int(command[1])-1, int(command[2])-1, int(command[3])-1, int(command[4])-1
+            x1,y1 = merged[r1][c1]
+            x2,y2 = merged[r2][c2]
+            if board[x1][y1] == "EMPTY":
+                board[x1][y1] = board[x2][y2]
+            for i in range(50):
+                for j in range(50):
+                    if merged[i][j] == (x2,y2):
+                        merged[i][j] = (x1,y1)
+        elif command[0] == 'UNMERGE':
+            r, c = int(command[1])-1,int(command[2])-1
+            x, y = merged[r][c]
+            tmp = board[x][y]
+            for i in range(50):
+                for j in range(50):
+                    if merged[i][j] == (x,y):
+                        merged[i][j] = (i,j)
+                        board[i][j] = "EMPTY"
+            board[r][c] = tmp
+        elif command[0] == 'PRINT':
+            r, c = int(command[1])-1, int(command[2])-1
+            x, y = merged[r][c]
+            answer.append(board[x][y])
     return answer
-print(solution(["UPDATE 1 1 a", "UPDATE 1 2 b", "UPDATE 2 1 c", "UPDATE 2 2 d", "MERGE 1 1 1 2", "MERGE 2 2 2 1", "MERGE 2 1 1 1", "PRINT 1 1", "UNMERGE 2 2", "PRINT 1 1"]))
