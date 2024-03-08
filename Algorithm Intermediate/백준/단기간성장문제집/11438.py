@@ -1,43 +1,3 @@
-# import sys
-# input=sys.stdin.readline
-# from collections import deque
-# def get_parent(node):
-#     parent=1
-#     for i in range(n+1):
-#         if node in tree[i]:
-#             parent=i
-#             break
-#     return parent
-# def lcs(x,y):
-#     while x!=y:
-#         if x>y:
-#             x=get_parent(x)
-#         else:
-#             y=get_parent(y)
-#     return x 
-# n=int(input())
-
-# tree=[deque() for _ in range(n+1)]
-
-
-# for i in range(n-1):
-#     x,y=map(int, input().split())
-#     if x<y:
-#         tree[x].append(y)
-#     else:
-#         tree[y].append(x)
-
-# m=int(input())
-# for i in range(m):
-#     x,y=map(int, input().split())
-#     if y in tree[x]:
-#         print(x)
-#         continue
-#     if x in tree[y]:
-#         print(y)
-#         continue
-        
-#     print(lcs(x,y))
 import sys
 sys.setrecursionlimit(100000)
 input = sys.stdin.readline
@@ -53,8 +13,6 @@ for _ in range(n - 1):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
-
-
 def dfs(x, depth):
     visited[x] = True
     d[x] = depth
