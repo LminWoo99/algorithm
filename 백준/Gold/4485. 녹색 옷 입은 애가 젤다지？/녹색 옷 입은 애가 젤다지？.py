@@ -23,7 +23,7 @@ while True:
     if n==0:
         break
     board=[list(map(int, input().split())) for _ in range(n)]
-    visit=[[int(1e9)]*n for _ in range(n)]
+    visit=[[10*(n**2)]*n for _ in range(n)]
     soultion(0,0,board[0][0])
     print("Problem {}: {}".format(j,visit[n-1][n-1]))
     j+=1
