@@ -1,28 +1,28 @@
 import sys
 input=sys.stdin.readline
-v,e=map(int, input().split())
-edges=[]
-for _ in range(e):    
-    edges.append(list(map(int, input().split())))
-root=dict()
-for i in range(1, v+1):
-    root[i]=i
 def find(x):
-    if root[x]==x:
-        return x
-    else:
-        root[x]=find(root[x])
-        return root[x]
+    if x!=parent[x]:
+        parent[x]=find(parent[x])
+    return parent[x]
 def union(x,y):
     x=find(x)
     y=find(y)
-    root[y]=x
-edges.sort(key=lambda x:x[2])
-answer=0
-for edge in edges:
-    if find(edge[0])==find(edge[1]):
-        continue
+    if x<y:
+        parent[y]=x
     else:
-        answer+=edge[2]
-        union(edge[0], edge[1])
-print(answer)
+        parent[x]=y
+v,e=map(int, input().split())
+trees=[]
+for _ in range(e):
+    trees.append(list(map(int, input().split())))
+parent=[0]*(v+1)
+for i in range(1, v+1):
+    parent[i]=i
+trees.sort(key=lambda a:a[2])
+res=0
+for tree in trees:
+    a,b,c=tree[0], tree[1], tree[2]
+    if find(a)!=find(b):
+        union(a,b)
+        res+=c
+print(res)
