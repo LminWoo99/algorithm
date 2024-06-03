@@ -11,7 +11,6 @@ def DFS(L):
             if first == second:
                 ans.extend(list(second))
             DFS(end)
-    visit[L]=0
             
 n=int(input())
 
@@ -24,7 +23,6 @@ for i in range(1, n+1):
     second=set()
     visit=[0]*(n+1)
     DFS(i)
-
 ans=list(set(ans))
 ans.sort()
 print(len(ans))
