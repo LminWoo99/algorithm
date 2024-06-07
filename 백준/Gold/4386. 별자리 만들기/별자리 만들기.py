@@ -1,36 +1,37 @@
-import math
 import sys
-sys.setrecursionlimit(1000000) # 재귀 깊이 제한 늘리기
+input=sys.stdin.readline
+import math
+INF = float(1e9)
+def calculate_distance(x1, y1, x2, y2):
+    return round(math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2),2)
 def find(x):
-    if parent[x]!=x:
+    if x!=parent[x]:
         parent[x]=find(parent[x])
     return parent[x]
-def union(x,y):
-    x=find(x)
-    y=find(y)
-    if x<y:
-        parent[y]=x
+def union(a,b):
+    a=find(a)
+    b=find(b)
+    if a<b:
+        parent[b]=a
     else:
-        parent[x]=y
+        parent[a]=b
 n=int(input())
-stars=[]
-parent=[i for i in range (n+1)]
-
+star=[]
 for _ in range(n):
     x,y=map(float, input().split())
-    stars.append((x,y))
-edges=[]
+    star.append((x,y))
+parent=[0]*(n+1)
+for i in range(1,n+1):
+    parent[i]=i
+graph=[]
 for i in range(n-1):
-    for j in range(i+1, n):
-        a_x, a_y=stars[i]
-        b_x, b_y=stars[j]
-        cost=math.sqrt((b_x-a_x)**2+(b_y-a_y)**2)
-        edges.append((cost, i,j))
-edges.sort()
+    for j in range(i+1,n):
+        tmp=calculate_distance(star[i][0],star[i][1],star[j][0],star[j][1])
+        graph.append((tmp, i,j))
+graph.sort()
 res=0
-for edge in edges:
-    cost,a,b=edge
-    if find(a)!=find(b):
-        union(a, b)
-        res+=cost
-print(math.floor(res*100)/100)
+for a in graph:
+    if find(a[1])!=find(a[2]):
+        union(a[1],a[2])
+        res+=a[0]
+print(res)
