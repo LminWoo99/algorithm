@@ -1,33 +1,28 @@
 import sys
-from collections import defaultdict
-sys.setrecursionlimit(1000000) # 재귀 깊이 제한 늘리기
 input=sys.stdin.readline
-def find(x):
-    if x!=master[x]:
-        master[x]=find(master[x])
-    return master[x]
-def union(x,y):
-    x=find(x)
-    y=find(y)
-    if x!=y:
-        master[y]=x
-        network[x]+=network[y]
-    res.append(network[x])
+from collections import defaultdict
 t=int(input())
-
-res=[]
+def find(x):
+    if x!=friend[x]:
+        friend[x]=find(friend[x])
+    return friend[x]
+def union(a,b):
+    a=find(a)
+    b=find(b)
+    if a!=b:
+        friend[b]=a
+        network[a]+=network[b]
+    print(network[a])
 for _ in range(t):
-    network=defaultdict(int)
-    master=defaultdict(str)
     f=int(input())
-    for _ in range(f):
-        a,b=map(str, input().rstrip().split())
-        if not master[a]:
-            master[a]=a
+    network=defaultdict(int)
+    friend=defaultdict(str)
+    for i in range(f):
+        a,b=input().rstrip().split()
+        if not friend[a]:
+            friend[a]=a
             network[a]=1
-        if not master[b]:
-            master[b]=b
+        if not friend[b]:
+            friend[b]=b
             network[b]=1
         union(a,b)
-for i in res:
-    print(i)
