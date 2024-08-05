@@ -9,6 +9,19 @@ def isPrime(target):
         if target%i==0:
             return False
     return True
+# def DFS(L, max_level):
+#     if L==max_level:
+#         return
+    
+#     DFS(L+1)
+    
+# def solution(numbers):
+#     ## 완탐 가능할듯
+#     answer=set()
+#     cand=[num for num in numbers]
+#     DFS(0, len(cand))
+#     ## 순열로 소수인지 파악
+#     return len(answer)
 def solution(numbers):
     ## 완탐 가능할듯
     answer=set()
