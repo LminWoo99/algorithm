@@ -1,23 +1,24 @@
 import heapq
-answer = 0
+def find(parent, x):
+    if x!=parent[x]:
+        parent[x]=find(parent, parent[x])
+    return parent[x]
+def union(parent,x,y):
+    x=find(parent,x)
+    y=find(parent,y)
+    if x<y:
+        parent[y]=x
+    else:
+        parent[x]=y     
 def solution(n, costs):
-    graph=[[]*(n) for _ in range(n)]
+    edges=[]
+    answer = 0
+    parent=[i for i in range(n)]
     for start, end, cost in costs:
-        graph[start].append((end,cost))
-        graph[end].append((start,cost))
-    visit=[0]*n
-    def dijkstra(cost, start):
-        global answer
-        hq=[]
-        heapq.heappush(hq, (cost, start))
-        while hq:
-            cnt, start=heapq.heappop(hq)
-            if visit[start]:
-                continue
-            visit[start]=1
-            answer+=cnt
-            for a,b in graph[start]:
-                if not visit[a]:
-                    heapq.heappush(hq, (b, a))
-    dijkstra(0,0)
+        edges.append((cost, start, end))
+    edges.sort()
+    for edge in edges:
+        if find(parent, edge[1])!=find(parent, edge[2]):
+            union(parent,edge[1],edge[2])
+            answer+=edge[0]
     return answer
