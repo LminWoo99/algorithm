@@ -5,6 +5,7 @@ def solution(friends, gifts):
     gift_card=defaultdict(int) ## 선물 지수 카운트
     gift_friend=[[0]*n for _ in range(n)]
     friends_idx=defaultdict(int)
+    
     for idx, val in enumerate(friends):
         friends_idx[val]=idx
     for gift in gifts:
@@ -20,14 +21,12 @@ def solution(friends, gifts):
         gift_friend[friends_idx[x]][friends_idx[y]]+=1
     for i in range(n):
         cnt=0
-        x=friends[i]
         for j in range(n):
-            y=friends[j]
             if i!=j:
                 if gift_friend[i][j]>gift_friend[j][i]:
                     cnt+=1
                 elif gift_friend[i][j]==gift_friend[j][i]:
-                    if gift_card[x]>gift_card[y]:
+                    if gift_card[friends[i]]>gift_card[friends[j]]:
                         cnt+=1
         answer=max(cnt, answer)
         
