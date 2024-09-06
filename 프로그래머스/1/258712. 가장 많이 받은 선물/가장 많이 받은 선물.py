@@ -23,10 +23,10 @@ def solution(friends, gifts):
         x=friends[i]
         for j in range(n):
             y=friends[j]
-            if x!=y:
-                if gift_friend[friends_idx[x]][friends_idx[y]]>gift_friend[friends_idx[y]][friends_idx[x]]:
+            if i!=j:
+                if gift_friend[i][j]>gift_friend[j][i]:
                     cnt+=1
-                elif gift_friend[friends_idx[x]][friends_idx[y]]==gift_friend[friends_idx[y]][friends_idx[x]]:
+                elif gift_friend[i][j]==gift_friend[j][i]:
                     if gift_card[x]>gift_card[y]:
                         cnt+=1
         answer=max(cnt, answer)
