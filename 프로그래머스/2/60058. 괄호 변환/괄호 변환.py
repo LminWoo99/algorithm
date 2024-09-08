@@ -1,8 +1,5 @@
 def divide(a):
-    if not a:
-        return ''
-    left=0
-    right=0
+    left,right=0,0
     u,v='',''
     for i in range(len(a)):
         if a[i]==')':
@@ -48,9 +45,5 @@ def solution(p):
                     answer+=')'
                 else:
                     answer+='('
-            return answer
-                    
-            
-            
-            
+            return answer        
     return answer
