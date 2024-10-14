@@ -1,6 +1,5 @@
 def solution(cookie):
     n=len(cookie)
-    ##과자수 같아야함
     cookie_sum=cookie[:]
     for i in range(1,n):
         cookie_sum[i]+=cookie_sum[i-1]
@@ -14,10 +13,6 @@ def solution(cookie):
         mid=i
         left, right=0,0
         while start<=mid and mid<end:
-            # if mid==start:
-            #     left=cookie[mid]
-            #     right=cookie_sum[end]-cookie_sum[mid]
-            # else:
             left=cookie_sum[mid]-cookie_sum[start]+cookie[start]
             right=cookie_sum[end]-cookie_sum[mid]
             if left==right:
