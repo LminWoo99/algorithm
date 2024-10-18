@@ -1,34 +1,31 @@
 import sys
 input=sys.stdin.readline
 from collections import deque
+    
 t=int(input())
-i=0
-while i<t:
-    i+=1
-    p=input().rstrip()
-    n=int(input())
-    arr = deque(input().rstrip()[1:-1].split(","))
-    flag=True
-    cnt=0
-    if n==0:
-        arr=[]
-    for j in p:
-        if j=='R':
-            cnt+=1
-        else:
-            if len(arr)<1:
-                flag=False
+for _ in range(t):
+    p=input().rstrip() # 수행할 함수
+    n=int(input()) # 배열에 들어있는 정수
+    a=input().rstrip()
+    a=deque(a[1:-1].split(','))
+    cnt=0 # rotate를 할지말지
+    flag=False
+    for command in p:
+        if command=='D':
+            if n<=0:
+                flag=True
                 break
             else:
-                if cnt%2==1:
-                    arr.pop()
+                if cnt%2==0:
+                    a.popleft()
                 else:
-                    arr.popleft()
+                    a.pop()
+            n-=1
+        else:
+            cnt+=1
     if cnt%2==1:
-        arr.reverse()
-    
-    if not flag:
+        a.reverse()
+    if flag:
         print("error")
     else:
-        print("[" + ",".join(arr) + "]")
-    
+        print('['+','.join(a)+']')
