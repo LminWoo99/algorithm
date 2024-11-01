@@ -8,10 +8,6 @@ class Solution {
             pqA.add(-A[i]);
             pqB.add(-B[i]);
         }
-        // 2457 
-        //    1368
-        // 2459
-        //     1368
         while (!pqA.isEmpty()){
             int cntA=-pqA.poll();
             int cntB=-pqB.poll();
