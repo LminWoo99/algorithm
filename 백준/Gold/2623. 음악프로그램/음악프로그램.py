@@ -18,8 +18,6 @@ for i in range(1, n+1):
     if dx[i]==0:
         dq.append(i)
 res=[]
-idx=0
-flag=False
 while dq:
     cur_singer=dq.popleft()
     res.append(cur_singer)
@@ -27,10 +25,8 @@ while dq:
         dx[next_singer]-=1
         if dx[next_singer]==0:
             dq.append(next_singer)
-    idx+=1
 if len(res)!=n:
     print(0)
 else:
     for singer in res:
         print(singer)
-        
