@@ -5,6 +5,7 @@ m,n=map(int, input().split())
 spaces=[]
 for _ in range(m):
     spaces.append(list(map(int, input().split())))
+res=defaultdict(int)
 for i in range(m):
     tmp=spaces[i][:]
     tmp.sort()
@@ -14,11 +15,12 @@ for i in range(m):
             order[val]=idx
     for j in range(n):
         spaces[i][j]=order[spaces[i][j]]
-
-res=0
-for i in range(m-1):
-    for j in range(i+1, m):
-        if spaces[i]==spaces[j]:
-            res+=1
-            
-print(res)
+    key=tuple(spaces[i])
+    if not res[key]:
+        res[key]=1
+    else:
+        res[key]+=1
+result=0
+for i in res.values():
+    result+=(i*(i-1))//2
+print(result)
