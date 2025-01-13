@@ -1,32 +1,31 @@
 import sys
-input=sys.stdin.readline
 from collections import deque
-n,k=map(int, input().split())
+input=sys.stdin.readline
 
-m=len(str(n))
-def BFS(n,k):
+def BFS():
     visit=set()
-    visit.add((n,0))
+    visit.add((n, 0))
     dq=deque()
     dq.append((n,0))
-    ans=0
+    ans=-1
     while dq:
-        n, cnt=dq.popleft()
-        if cnt==k:
-            ans=max(ans, n)
+        val, idx=dq.popleft()
+        if idx==k:
+            ans=max(val, ans)
             continue
-        n=list(str(n))
+        val=list(str(val))
         for i in range(m-1):
             for j in range(i+1, m):
-                if i==0 and n[j]=='0':
+                if i==0 and val[j]=='0':
                     continue
-                n[i], n[j]=n[j], n[i]
-                nn=int(''.join(n))
-                if (nn,cnt+1) not in visit:
-                    visit.add((nn, cnt+1))
-                    dq.append((nn,cnt+1))
-                n[i], n[j]=n[j], n[i]
-    return ans if ans else -1;
-res=BFS(n,k)
-print(res)
+                val[i], val[j]= val[j], val[i]
+                new_val=int(''.join(val))
+                if (new_val, idx+1) not in visit:
+                    visit.add((new_val, idx+1))
+                    dq.append((new_val, idx+1))
+                val[i], val[j]= val[j], val[i]
+    return ans
+n,k = map(int, input().split())
+m=len(str(n))
 
+print(BFS())
