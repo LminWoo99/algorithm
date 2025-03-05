@@ -1,17 +1,18 @@
 import sys
 input=sys.stdin.readline
 sys.setrecursionlimit(2000)
+
 n=int(input())
-a=[int(input()) for _ in range(n)]
-dp =[[0 for i in range(n)] for i in range(n)]
+a=[]
+for _ in range(n):
+    a.append(int(input()))
+dp=[[0 for _ in range(n)] for _ in range(n)]
 
-def DFS(s,e,cnt):
-    if s==e:
-        return a[s]*cnt
-    if dp[s][e]:
-        return dp[s][e]
-    
-    dp[s][e]=max(DFS(s+1,e,cnt+1)+cnt*a[s], DFS(s,e-1,cnt+1)+cnt*a[e])
-    return dp[s][e]
-
+def DFS(left, right, cnt):
+    if left==right:
+        return  a[left]*cnt
+    if dp[left][right]:
+        return dp[left][right]
+    dp[left][right]=max(DFS(left+1, right, cnt+1)+cnt*a[left], DFS(left, right-1, cnt+1)+cnt*a[right])
+    return dp[left][right]
 print(DFS(0, n-1, 1))
